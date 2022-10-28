@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -27,8 +26,11 @@ DEBUG = True
 
 APPEND_SLASH = True
 
-ALLOWED_HOSTS = ["localhost", "bcars4younurgul.eu-gb.cf.appdomain.cloud"]
+ALLOWED_HOSTS = ["localhost", "localhost:8000",
+                 "afaizan.mybluemix.net"]
 
+CSRF_TRUSTED_ORIGINS = ['https://angelicagard-8000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/',
+                        "http://angelicagard.eu-gb.mybluemix.net",'https://*.127.0.0.1']
 
 # Application definition
 

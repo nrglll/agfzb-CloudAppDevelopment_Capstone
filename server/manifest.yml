@@ -1,11 +1,11 @@
   applications:
   - name: djangoapp
     routes:
-      - route: bcars4younurgul.eu-gb.cf.appdomain.cloud
+      - route: afaizan.mybluemix.net
     memory: 128M
     buildpack: python_buildpack
   - name: djangoapp-nginx
     routes:
-      - route: bcars4younurgul.eu-gb.cf.appdomain.cloud/static
+      - route: afaizan.mybluemix.net/static
     memory: 128M
     buildpack: staticfile_buildpack
