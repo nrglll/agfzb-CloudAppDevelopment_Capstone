@@ -47,7 +47,7 @@ def get_dealers_from_cf(url, **kwargs):
     json_result = get_request(url)
     if json_result:
         # Get the row list in JSON as dealers
-        dealers = json_result["body"]
+        dealers = json_result#json_result["body"]
         # For each dealer object
         for dealer in dealers:
             dealer_doc = dealer["doc"]
@@ -61,9 +61,10 @@ def get_dealers_from_cf(url, **kwargs):
 
 
 def get_dealer_from_cf_by_id(url, dealer_id):
-    json_result = get_request(url, id=dealer_id)
+    json_result = get_request(url, dealerId=dealer_id)
     if json_result:
-        dealer = json_result["body"][0]
+        #dealer = json_result["body"][0]
+        dealer = json_result[0]
         dealer_obj = CarDealer(address=dealer["address"], city=dealer["city"], full_name=dealer["full_name"],
                                id=dealer["id"], lat=dealer["lat"], long=dealer["long"],
                                short_name=dealer["short_name"],
@@ -75,7 +76,7 @@ def get_dealer_reviews_from_cf(url, dealer_id):
     results = []
     json_result = get_request(url, dealerId=dealer_id)
     if json_result:
-        reviews = json_result["body"]
+        reviews = json_result
         for review in reviews:
             if review["purchase"]:
                 review_obj = DealerReview(
@@ -87,7 +88,8 @@ def get_dealer_reviews_from_cf(url, dealer_id):
                     car_make=review["car_make"],
                     car_model=review["car_model"],
                     car_year=review["car_year"],
-                    sentiment=analyze_review_sentiments(review["review"]),
+                    #sentiment=analyze_review_sentiments(review["review"]),
+                    sentiment="",
                     id=review['id']
                 )
             else:
@@ -100,7 +102,7 @@ def get_dealer_reviews_from_cf(url, dealer_id):
                     car_make=None,
                     car_model=None,
                     car_year=None,
-                    sentiment=analyze_review_sentiments(review["review"]),
+                    sentiment="",#analyze_review_sentiments(review["review"]),
                     id=review['id']
                 )
             results.append(review_obj)
