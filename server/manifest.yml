@@ -1,11 +1,11 @@
   applications:
   - name: djangoapp
     routes:
-      - route: djangoapp-mersin.mybluemix.net
+      - route: djangoapp-mersin.eu-gb.mybluemix.net
     memory: 128M
     buildpack: python_buildpack
   - name: djangoapp-nginx
     routes:
-      - route: djangoapp-mersin.mybluemix.net/static
+      - route: djangoapp-mersin.eu-gb.mybluemix.net/static
     memory: 128M
     buildpack: staticfile_buildpack
